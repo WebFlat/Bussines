@@ -1,0 +1,1125 @@
+@import 'normalize';
+@import 'mixins';
+@import 'slick-theme';
+@import 'slick';
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
+
+
+* {
+	box-sizing: border-box;
+}
+
+$default-color: #ffffff;
+$secondary-color: #576A8F;
+$primary-color: #282733;
+$light-color: #BEBEBE;
+$input-border: #E8E8E8;
+$reg-color: #274AC3;
+$header-bg: #576A8F;
+$user-info-bg: #7498CF;
+$bg-gray: #F4F6FF;
+$task-normal: #FFB822;
+$task-medium: #1DC9B7;
+$task-hard: #FD397A;
+$text: #333333;
+
+html {
+	font-size: 10px;
+	height: 100%;
+	scroll-behavior: smooth;
+}
+
+body {
+	min-height: 100%;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1.4rem;
+	color: $primary-color;
+}
+
+button,
+input {
+	outline: transparent !important;
+}
+
+
+//Button*******************
+
+.btn {
+	font-weight: 400;
+	width: 100%;
+	max-width: 345px;
+	padding: 20px;
+	background: transparent;
+	border: 1px solid $secondary-color;
+	border-radius: 15px;
+	&--fill {
+		background: $secondary-color;
+		color: $default-color;
+	}
+}
+@media screen and (max-width: 320px) {
+	.btn {
+		max-width: 300px;
+	}
+}
+
+//header block**************************************
+.header {
+	position: fixed;
+	height: 90px;
+	width: 100%;
+	top: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: $header-bg;
+	z-index: 10;
+	&--reg {
+		background: $reg-color;
+	}
+	&--transparent {
+		height: 60px;		
+		background: $bg-gray;
+		.header__back {
+			top: 23px;
+		}
+	}
+	&__back {
+		position: absolute;
+		top: 37px;
+		left: 32px;
+		width: 7px;
+		height: 15px;
+		border: none;
+		background: url(./../img/back-icon-white.svg) no-repeat;
+		&--blue {
+			background: url(./../img/back-icon-blue.svg) no-repeat;
+		}
+	}
+	&__title {
+		color: $default-color;
+		font-size: 1.6rem;
+		font-weight: 700;
+	}
+}
+
+
+//customer block************************************
+.customer {
+	max-width: 345px;
+	height: 61px;
+	margin: 0 auto;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	background: $user-info-bg;
+	padding: 0 20px;
+	border-radius: 15px;
+	color: $default-color;
+	&__wrap-icon {
+		position: relative;
+		overflow: hidden;
+		border-radius: 50%;
+		height: 40px;
+		width: 40px;
+		background: $default-color
+	}
+	&__img {
+		@include myPos();
+		z-index: 5;
+		max-width: 100%;
+	}
+	&__name {
+		margin-left: 10px;
+	}
+}
+@media screen and (max-width: 320px) {
+	.customer {
+		max-width: 300px;
+	}
+}
+
+
+
+//executor block******************************************
+.executor {
+	margin: 10px auto;
+	background: $default-color;
+	height: 189px;
+	overflow: hidden;
+	max-width: 345px;
+	border-radius: 15px;
+	padding: 25px 20px;
+	position: relative;
+	&__colorline {
+		position: absolute;
+		width: 2px;
+		height: 88px;
+		border-radius: 0px 2px 2px 0px;
+		background: $task-hard;
+		left: 0;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+	&__info {
+		width: 100%;
+		display: flex;
+		align-items: center;
+	}
+	&__wrap-icon {
+		position: relative;
+		overflow: hidden;
+		border-radius: 50%;
+		height: 40px;
+		min-width: 40px;
+		min-height: 40px;
+		width: 40px;
+		background: $default-color
+	}
+	&__img {
+		@include myPos();
+		z-index: 5;
+		max-width: 100%;
+	}
+	&__name {
+		margin-left: 10px;
+		display: block;
+		width: auto;
+		position: relative;
+		color: $text;
+		&::after {
+			content: '';
+			display: block;
+			position: absolute;
+			bottom: -25px;
+			width: 140%;
+			height: 1px;
+			background: $input-border;
+		}
+	}
+	&__data {
+		display: flex;
+		margin-top: 35px;
+	}
+	&__id {
+		color: $default-color;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		padding: 8px;
+		width: 40px;
+		height: 64px;
+		border-radius: 5px;
+	}
+	&__param {
+		font-size: 1.2rem;
+		font-weight: 600;
+		line-height: 16px;
+		opacity: .52;
+	}
+	&__val {
+		line-height: 19px;
+	}
+	&__task {
+		font-size: 1.2rem;
+		color: $light-color;
+		text-align: left;
+		margin-left: 15px;
+		line-height: 16px;
+		width: 100%;
+	}
+	&__condition-task,
+	&__die-task {
+		margin-top: 8px;
+	}
+	&__type-task,
+	&__condition-task,
+	&__die-task {
+		display: flex;
+		justify-content: space-between;
+	}
+	&__type-val,
+	&__condition-date,
+	&__die-date {
+		font-size: 1.4rem;
+	}
+	&__type-val {
+		color: $primary-color;
+
+	}
+	&__die-date {
+		color: $task-medium;
+	}
+	.task-norm {
+		background: $task-normal;
+	}
+	.task-med {
+		background: $task-medium;
+	}
+	.task-hard {
+		background: $task-hard;
+	}
+}
+@media screen and (max-width: 320px) {
+	.executor {
+		max-width: 300px;
+	}
+}
+
+
+//period block*************************************
+.period {
+	background: $default-color;
+	margin: 10px auto 0 auto;
+	border-radius: 15px;
+	text-align: left;
+	padding: 20px;
+	max-width: 345px;
+	&__label {
+		font-size: 1.2rem;
+		color: $header-bg;
+		display: block;
+	}
+	&__input {
+		margin-top: 15px;
+		width: 100%;
+		font-size: 1.4rem;
+		line-height: 19px;
+		padding: 12px 13px;
+		border-radius: 5px;
+		border: 0.5px solid $input-border;
+		color: $text;
+	}
+}
+@media screen and (max-width: 320px) {
+	.period {
+		max-width: 300px;
+	}
+}
+
+
+
+//description task block****************************
+.description {
+	background: $default-color;
+	margin: 10px auto 0 auto;
+	border-radius: 15px;
+	text-align: left;
+	padding: 20px 20px 40px 20px;
+	max-width: 345px;
+	color: $text;
+	&__title {
+		font-size: 1.2rem;
+		color: $header-bg;
+		display: block;
+	}
+	&__text {
+		line-height: 19px;
+		margin-top: 8px;
+	}
+}
+
+
+
+
+//comments block***********************************
+.comments {
+	background: $default-color;
+	border-radius: 15px;
+	padding: 20px 15px;
+	margin-top: 10px;
+	&__title {
+		font-size: 1.6rem;
+		font-weight: 400;
+		color: $header-bg;
+		margin-right: 5px;
+	}
+	&__title-wrap {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	&__item {
+		margin-top: 20px;
+		padding-top: 20px;
+		display: flex;
+		text-align: left;
+		position: relative;
+		&::before {
+			content: '';
+			top: 0;
+			position: absolute;
+			display: block;
+			width: 100%;
+			height: 1px;
+			background: $input-border;
+		}
+	}
+	&__wrap-icon {
+		position: relative;
+		overflow: hidden;
+		border-radius: 50%;
+		height: 40px;
+		width: 40px;
+		min-width: 40px;
+		background: $default-color;
+	}
+	&__user-foto {
+		position: relative;
+		height: 40px;
+	}
+	.online {
+		position: absolute;
+		border-radius: 50%;
+		width: 10px;
+		height: 10px;
+		background: $task-medium;
+		bottom: 2px;
+		right: -2px;
+		z-index: 5;
+	}
+	&__img {
+		@include myPos();
+		z-index: 5;
+		max-width: 100%;
+	}
+	&__info {
+		margin-left: 20px;
+		line-height: 19px;
+		color: $text;
+	}
+	&__user {
+		font-weight: 300;
+		color: $light-color;
+		&--customer {
+			color: $task-normal;
+		}
+	}	
+	&__text {
+		margin-top: 5px;
+	}
+	&__date {
+		margin-top: 15px;
+		display: block;
+		text-align: right;
+		font-size: 1.2rem;
+		color: $light-color;
+		opacity: .68;
+	}
+}
+
+
+//footer*******************************************
+.footer {
+	position: fixed;
+	z-index: 100;
+	bottom: 0;
+	background: $default-color;
+	height: 49px;
+	width: 100%;
+	.wrapper {
+		height: 100%;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+	}
+}
+.footer-btn {
+	border: none;
+	background: transparent;
+	position: relative;
+	&::after {
+		content: '';
+		position: absolute;
+		display: none;
+		width: 6px;
+		height: 1px;
+		background: $header-bg;
+		bottom: 0;
+		right: 50%;
+		transform: translateX(50%);
+	}
+}
+.footer-btn.active {
+	&::after {
+		display: block;
+	}
+}
+.footer-icon.fill path {
+	fill: $header-bg;
+	
+}
+
+
+
+//Helpers*******************************************
+.wrapper {
+	max-width: 375px;
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+}
+@media screen and (min-width: 768px) {
+	.wrapper {
+		max-width: 500px;
+	}
+}
+
+
+
+//Registration-place*********************************
+.reg-place {
+	background: url(./../img/volkan-olmez-aG-pvyMsbis-unsplash.jpg) no-repeat;
+	background-size: cover;
+	background-position: bottom;
+	height: 100vh;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	padding-bottom: 46px;
+	&__logo-wrap {
+		@include myPos(35%,50%, -50%,-50%);	
+	}
+	&__btns {
+		display: flex;
+		width: 100%;
+		flex-direction: column;
+		align-items: center;
+	}
+	.btn {
+		color: $secondary-color;
+	}
+	.btn--fill {
+		margin-bottom: 10px;
+		color: $default-color;
+	}
+}
+
+
+
+
+
+
+//Auth page ****************************************
+.auth {
+	background: url(./../img/volkan-olmez-aG-pvyMsbis-unsplash2.jpg) no-repeat;
+	background-size: cover;
+	background-position: bottom;
+	height: 100vh;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	&__logo-wrap {
+		@include myPos(15%,50%, -50%,-50%);	
+	}
+	&__btns {
+		display: flex;
+		width: 100%;
+		flex-direction: column;
+		align-items: center;
+		margin-top: 45px;
+	}
+	.btn {
+		color: $secondary-color;
+	}
+	.btn--fill {
+		margin-bottom: 10px;
+		color: $default-color;
+	}
+	&__form {
+		padding: 35px 15px;
+		background: $default-color;
+		border-radius: 35px 35px 0px 0px;
+		text-align: left;
+	}
+	&__title {
+		font-size: 2rem;
+		color: $secondary-color;
+		font-weight: 700;
+	}
+	&__subtitle,
+	&__link-conditions {
+		color: $light-color;
+	}
+	&__subtitle {
+		margin-top: 10px;
+		display: block;
+	}
+	&__inpt {
+		width: 100%;
+		padding: 16px 0;
+		margin-top: 20px;
+		border: none;
+		border-bottom: 1px solid $input-border;
+		text-indent: 30px;
+		&::placeholder {
+			color: $primary-color;
+		}
+	}
+	&__inp-wrap {
+		position: relative;
+		&::before {
+			content: '';
+			display: block;
+			width: 16.65px;
+			height: 17.77px;
+			background: url('./../img/user-icon.svg') no-repeat;
+			background-size: 100%;
+			position: absolute;
+			left: 0;
+			top: 63%;
+			transform: translateY(-50%);
+		}
+		&--pass {
+			&::before {
+				background: url('./../img/password-icon.svg') no-repeat;
+			}
+		}
+	}
+	&__helps {
+		margin-top: 28px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	&__link-conditions {
+		margin-top: 35px;
+		text-align: center;
+		display: block;
+		text-decoration: none;
+		color: $light-color;
+		font-weight: 300;
+	}
+	&__check {
+		width: 20px;
+		height: 20px;
+		margin-right: 10px;
+		opacity: .5;
+	}
+	&__check-wrap {
+		display: flex;
+		align-items: center;
+		color: $light-color;
+	}
+	&__link {
+		color: $primary-color;
+		text-decoration: none;
+	}
+	&__back {
+		position: absolute;
+		top: 32px;
+		left: 32px;
+		width: 7px;
+		height: 15px;
+		border: none;
+		background: url(./../img/back-icon.svg) no-repeat;
+	}
+}
+
+
+
+
+
+
+
+//Registration page*******************************************
+
+.registration {
+	background: $default-color;
+	height: 100vh;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	&__inp-wrap {
+		position: relative;
+		&::after  {
+			content: '*';
+			display: block;
+			width: 5px;
+			height: 5px;
+			color: red;
+			position: absolute;
+			right: 5px;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+		&:nth-of-type(4),
+		&:nth-of-type(5) {
+			&::after {
+				content: '';
+			}
+		}
+	}
+	&__inpt {
+		width: 100%;
+		padding: 16px 0;
+		margin-top: 20px;
+		border: none;
+		border-bottom: 1px solid $input-border;
+		outline: none;
+		color: $primary-color;
+		&::placeholder {
+			color: $light-color;
+		}
+	}
+	&__form {
+		margin: 0 auto;
+		max-width: 345px;
+		padding-top: 140px;
+	}
+	&__link-conditions {
+		margin-top: 35px;
+		margin-bottom: 35px;
+		text-align: center;
+		display: block;
+		text-decoration: none;
+		color: $light-color;
+		font-weight: 300;
+	}
+	.btn--reg {
+		background: $reg-color;
+		color: $default-color;
+		margin-top: 55px;
+	}
+}
+@media screen and (max-width: 360px) {
+	.registration__form {
+		max-width: 290px;
+	}
+}
+
+
+
+//task-open****************************************
+.task-open {
+	padding-top: 120px;
+	padding-bottom: 40px;
+	background: $bg-gray;
+	&__btns {
+		margin-top: 20px;
+	}
+	&__write,
+	&__save {
+		color: $default-color;
+		background: $header-bg;
+		font-weight: 400;
+		border: none;
+	}
+	&__save {
+		margin-top: 10px;
+		background: $task-hard;
+	}
+}
+
+
+
+
+
+
+//tasks block***************************************
+.tasks {
+	min-height: 100vh;
+	padding-top: 125px;
+	padding-bottom: 80px;
+	background: $bg-gray;
+	.executor__condition-date {
+		color: $primary-color;
+	}
+	&__select {
+		max-width: 168px;
+		width: 50%;
+		background: $default-color;
+		border: none;
+		border-radius: 15px;
+		height: 60px;
+		text-align: left;
+		padding: 0 15px;
+		position: relative;
+		&::after {
+			content: '';
+			position: absolute;
+			display: block;
+			width: 16px;
+			height: 16px;
+			right: 20px;
+			top: 50%;
+			transform: translateY(-50%);
+			background: url(./../img/lists.svg) no-repeat;
+			z-index: 5;
+		}
+	}
+	&__search,
+	&__selection {
+		display: flex;
+		max-width: 345px;
+		margin: 0 auto;
+		justify-content: space-between;
+	}
+	&__selection {
+		margin-top: 10px;
+	}
+	&__search-inpt {
+		width: 275px;
+		height: 60px;
+		border-radius: 15px;
+		border: none;
+		padding: 0 40px 0 15px;
+		outline: transparent;
+		position: relative;
+		&::placeholder{
+			color: $light-color;
+		}
+	}
+	&__inp-wrap {
+		position: relative;
+		z-index: 2;
+		&::after {
+			content: '';
+			position: absolute;
+			display: block;
+			width: 16px;
+			height: 16px;
+			right: 20px;
+			top: 50%;
+			transform: translateY(-50%);
+			background: url(./../img/search.svg) no-repeat;
+			z-index: 5;
+		}
+	}
+	&__add {
+		color: $default-color;
+		background: $secondary-color;
+		border: none;
+		border-radius: 15px;
+		font-size: 3.6rem;
+		font-weight: 400;
+		max-width: 60px;
+		width: 60px;
+		height: 60px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	
+}
+.task {
+	&__link {
+		width: 26px;
+		height: 8px;
+		position: absolute;
+		bottom: -15px;
+		right: 0;
+		background: url(./../img/link.svg) no-repeat;
+	}
+	&__content {
+		margin-top: 15px;
+		text-align: left;
+		margin-left: 15px;
+	}
+	&__text {
+		margin-top: 8px;
+		line-height: 19px;
+	}
+	.executor {
+		display: flex;
+		flex-direction: column-reverse;
+		height: auto;
+		padding-bottom: 40px;
+	}
+	.executor__data {
+		align-items: flex-start;
+		margin-bottom: 20px;
+		margin-top: 0;
+	}
+	.executor__name {
+		margin-left: 0;
+		font-size: 1.2rem;
+		color: $header-bg;
+		&::after {
+			display: none;
+		}
+	}
+	.executor__info {
+		position: relative;
+		&::before {
+			content: '';
+			display: block;
+			position: absolute;
+			top: 0;
+			width: 100%;
+			height: 1px;
+			background: $input-border;
+		}
+	}
+}
+
+
+
+
+
+//notifications block*********************************
+.notifications {
+	padding-top: 135px;
+	padding-bottom: 60px;
+	background: $bg-gray;
+	min-height: 100vh;
+	&__empty {
+		margin-top: 100px;
+	}
+	&__text {
+		line-height: 19px;
+	}
+	&__item {
+		position: relative;
+		max-width: 345px;
+		margin: 0 auto;
+		margin-top: 10px;
+		background: $default-color;
+		text-align: left;
+		border-radius: 15px;
+		padding: 30px 30px 25px 30px;
+		line-height: 19px;
+	}
+	&__name {
+		color: $task-medium;
+	}
+	&__date {
+		color: $light-color;
+		margin-top: 5px;
+		display: block;
+	}
+	&__link {
+		position: absolute;
+		width: 26px;
+		height: 8px;
+		right: 15px;
+		bottom: 15px;
+		background: url(./../img/link.svg) no-repeat;
+	}
+}
+
+
+
+
+//contacts block**************************************
+.contacts {
+	padding: 77px 0 110px 0;
+	background: $bg-gray;
+	min-height: 100vh;
+	&__item {
+		padding: 26px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		background: $default-color;
+		border-radius: 15px;
+		max-width: 345px;
+		margin: 10px auto 0 auto;
+		font-size: 1.6rem;
+	}
+	&__title {
+		font-size: 2.2rem;
+		width: 240px;
+		margin: 0 auto;
+		margin-bottom: 25px;
+	}
+	&__icon-wrap {
+		width: 67px;
+		height: 67px;
+		border-radius: 50%;
+		background: $header-bg;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	&__name {
+		margin-top: 10px;
+		color: $light-color;
+	}
+	&__link {
+		font-weight: 600;
+		color: $primary-color;
+		text-decoration: none;
+		margin-top: 10px;
+	}
+}
+
+
+
+
+//empty-screen block*****************************
+.empty-screen {
+	padding: 72px 0 70px 0;
+	min-height: 100vh;
+	background: $bg-gray;
+	&__content {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		margin-top: 152px;
+	}
+	&__subtitle {
+		margin-top: 15px;
+		line-height: 22px;
+		font-size: 1.6rem;
+	}
+	&__title {
+		font-size: 2.2rem;
+		font-weight: 400;
+		margin-bottom: 20px;
+	}
+}
+
+
+
+
+//profile block*********************************
+.profile {
+	padding: 90px 0 160px 0;
+	min-height: 100vh;
+	background: $bg-gray;
+	&__info {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 20px;
+		background: $default-color;
+		border-radius: 0px 0px 15px 15px;
+		max-width: 345px;
+		margin: 0 auto;
+	}
+	&__name {
+		margin-top: 15px;
+		display: inline-block;
+	}
+	&__upload {
+		border: none;
+		background: url(./../img/fotocamera.svg) no-repeat;
+		width: 17px;
+		height: 15px;
+		margin-left: 5px;
+	}
+	&__exit {
+		margin-top: 20px;
+		border: none;
+		background: transparent;
+		position: relative;
+		color: $header-bg;
+		&::after {
+			content: '';
+			display: block;
+			position: absolute;
+			width: 14px;
+			height: 15px;
+			background: url(../img/exit.svg) no-repeat;
+			right: -15px;
+			bottom: 0;
+		}
+	}
+	&__label {
+		font-size: 1.2rem;
+		color: $header-bg;
+	}
+	&__inp-wrap {
+		margin-top: 15px;
+		border: 0.5px solid $input-border;
+		border-radius: 5px;
+		height: 45px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 10px 15px;
+	}
+	&__input {
+		background: transparent;
+		border: none;
+		width: 240px;
+	}
+	&__edit {
+		border: none;
+		background: url(../img/edit.svg) no-repeat;
+		width: 15px;
+		height: 15px;
+	}
+	&__block,
+	.describe {
+		max-width: 345px;
+		margin: 0 auto;
+		border-radius: 15px;
+		background: $default-color;
+		margin-top: 10px;
+		text-align: left;
+		padding: 20px;
+	}
+	.describe {
+		padding: 20px 20px 0 20px;
+	}
+	&__img-wrap {
+		width: 96px;
+		height: 96px;
+		border-radius: 50%;
+		overflow: hidden;
+		position: relative;
+	}
+	&__img {
+		max-width: 100%;
+		@include myPos();
+	}
+	&__add-services {
+		margin-top: 20px;
+	}
+}
+.describe {
+	&__title {
+		font-size: 1.6rem;
+		text-align: center;
+	}
+	&__header {
+		margin-top: 36px;
+		font-size: 1.2rem;
+		display: flex;
+		justify-content: space-between;
+		padding-bottom: 15px;
+	}
+	&__item {
+		padding: 20px 0;
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+		position: relative;
+		&::before {
+			content: '';
+			display: block;
+			position: absolute;
+			width: 100%;
+			height: 0.5px;
+			background: $input-border;
+			top: 0;
+		}
+	}
+	&__name {
+		width: 101px;
+		line-height: 19px;
+		color: $header-bg;
+	}
+	&__date {
+		font-size: 1.2rem;
+		line-height: 16.3px;
+		color: $light-color;
+	}
+}
+
+
+
+
+
+
+
+
+
+

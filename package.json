@@ -1,0 +1,36 @@
+{
+  "name": "webpack-gulp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "build": "gulp scripts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-latest": "^6.24.1",
+    "browser-sync": "^2.26.3",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-rigger": "^0.5.8",
+    "gulp-sass": "^4.0.2",
+    "gulp-uglify": "^3.0.2",
+    "jquery": "^3.5.1",
+    "webpack": "^4.44.2",
+    "webpack-stream": "^6.1.0"
+  },
+  "dependencies": {},
+  "browserslist": [
+    "last 3 versions",
+    "opera 12-13",
+    "ie >= 9",
+    "ff ESR"
+  ],
+  "author": "Yaschuk Vyacheslav",
+  "license": "ISC"
+}
