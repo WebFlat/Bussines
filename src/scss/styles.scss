@@ -9,7 +9,7 @@
 * {
 	box-sizing: border-box;
 }
-
+//light theme*****************************
 $default-color: #ffffff;
 $secondary-color: #576A8F;
 $primary-color: #282733;
@@ -23,6 +23,9 @@ $task-normal: #FFB822;
 $task-medium: #1DC9B7;
 $task-hard: #FD397A;
 $text: #333333;
+
+//dark theme******************************
+
 
 html {
 	font-size: 10px;
@@ -56,6 +59,9 @@ input {
 	&--fill {
 		background: $secondary-color;
 		color: $default-color;
+	}
+	&--xs {
+		max-width: 317px;
 	}
 }
 @media screen and (max-width: 320px) {
@@ -268,36 +274,6 @@ input {
 }
 
 
-//period block*************************************
-.period {
-	background: $default-color;
-	margin: 10px auto 0 auto;
-	border-radius: 15px;
-	text-align: left;
-	padding: 20px;
-	max-width: 345px;
-	&__label {
-		font-size: 1.2rem;
-		color: $header-bg;
-		display: block;
-	}
-	&__input {
-		margin-top: 15px;
-		width: 100%;
-		font-size: 1.4rem;
-		line-height: 19px;
-		padding: 12px 13px;
-		border-radius: 5px;
-		border: 0.5px solid $input-border;
-		color: $text;
-	}
-}
-@media screen and (max-width: 320px) {
-	.period {
-		max-width: 300px;
-	}
-}
-
 
 
 //description task block****************************
@@ -412,6 +388,7 @@ input {
 
 //footer*******************************************
 .footer {
+	box-shadow: 0px -1px 4px rgba(0, 0, 0, 0.04);
 	position: fixed;
 	z-index: 100;
 	bottom: 0;
@@ -1025,6 +1002,44 @@ input {
 		font-size: 1.2rem;
 		color: $header-bg;
 	}
+	&__data-edit {
+		z-index: 1;
+		width: 15px;
+		height: 15px;
+		position: absolute;
+		right: 18px;
+		border: none;
+		background: url(../img/date-edit.svg) no-repeat;
+		&--file {
+			width: 32px;
+			height: 32px;
+			background: $header-bg;
+			border-radius: 50%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+	&__inp-date {
+		position: absolute;
+		border: none;
+		color: $primary-color;
+	}
+	&__inputs {
+		display: flex;
+		width: 100%;
+		justify-content: space-between;
+		margin-top: 30px;
+	}
+	&__inp-day {
+		width: 97px;
+		height: 45px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border: 0.5px solid $input-border;
+		border-radius: 5px;
+	}
 	&__inp-wrap {
 		margin-top: 15px;
 		border: 0.5px solid $input-border;
@@ -1034,11 +1049,23 @@ input {
 		justify-content: space-between;
 		align-items: center;
 		padding: 10px 15px;
+		position: relative;
+		z-index: 2;
+		&--file {
+			border: none;
+			margin-top: 0;
+		}
 	}
 	&__input {
 		background: transparent;
 		border: none;
 		width: 240px;
+		&--date {
+			position: relative;
+			z-index: 2;
+			opacity: 0;
+			width: 100%;
+		}
 	}
 	&__edit {
 		border: none;
@@ -1055,6 +1082,11 @@ input {
 		margin-top: 10px;
 		text-align: left;
 		padding: 20px;
+	}
+	&__block {
+		&--file {
+			padding: 10px 0 10px 0;
+		}
 	}
 	.describe {
 		padding: 20px 20px 0 20px;
@@ -1112,6 +1144,265 @@ input {
 		line-height: 16.3px;
 		color: $light-color;
 	}
+}
+//add-task**************************************
+.add-task {
+	&__file {
+		text-align: left;
+		padding: 15px 20px;
+		margin: 10px auto 0 auto;
+		max-width: 345px;
+		background: $default-color;
+		border-radius: 15px;
+		position: relative;
+	}
+	&__file-num,
+	&__file-dot {
+		font-size: 1.2rem;
+		color: $light-color;
+	}
+	&__file-name {
+		max-width: 80%;
+		text-overflow: ellipsis;
+		line-height: 19px;
+	}
+	&__file-del {
+		border: none;
+		background: transparent;
+		position: absolute;
+		right: 20px;
+	}
+}
+
+
+
+//dashboard page**********************************
+.dashboard {
+	padding-top: 100px;
+	min-height: 100vh;
+	background: $header-bg;
+	&__user {
+		display: flex;
+		padding: 0 15px;
+	}
+	&__user-info {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: center;
+		color: $default-color;
+		font-size: 1.4rem;
+		font-weight: 600;
+		margin-left: 15px;
+		line-height: 19px;
+	}
+	&__wrap-img {
+		position: relative;
+		min-width: 21px;
+		width: 40px;
+		height: 40px;
+		min-height: 21px;
+		overflow: hidden;
+		border-radius: 50%;
+		img {
+			@include myPos();
+			max-width: 100%;
+		}
+	}
+	&__user-company {
+		font-weight: 300;
+		opacity: .6;
+	}
+	&__content {
+		padding: 30px 0 60px 0;
+		margin-top: 32px;
+		background: $default-color;
+		min-height: 80vh;
+		border-radius: 35px 35px 0px 0px;
+	}
+	&__title-block,
+	&__titles-more  {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	&__title {
+		font-size: 1.8rem;
+		&--service {
+			margin-top: 20px;
+		}
+	}
+	&__del-item,
+	&__info-btn {
+		border: none;
+		background: transparent;
+	}
+	&__content-wrap {
+		padding: 0 15px;
+	}
+	&__items {
+		padding-bottom: 30px;
+		margin: 35px auto 30px auto;
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(105px, .5fr));
+		grid-gap: 15px;
+		position: relative;
+		&::after {
+			position: absolute;
+			content: '';
+			display: block;
+			height: .5px;
+			width: 100%;
+			background: $input-border;
+			bottom: 0;
+
+		}
+	}
+	&__item {
+		position: relative;
+	}
+	&__del-service {
+		position: absolute;
+		right: 0;
+		fill: $light-color;
+		display: none;
+	}
+	&__link {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 105px;
+		width: 105px;
+		border-radius: 50%;
+		background: $bg-gray;
+	}
+	&__titles-more {
+		padding: 0 15px;
+	}
+	&__link-more {
+		font-size: 1.2rem;
+		color: $primary-color;
+		margin: 0;
+		padding: 0;
+	}
+	&__subtitle {
+		text-align: left;
+		color: $light-color;
+		margin-top: 10px;
+		padding: 0 15px;
+	}
+	&__consutations {
+		margin-top: 20px;
+		display: flex;
+		overflow-x: scroll;
+		width: 100%;
+		padding-left: 15px;
+		&::-webkit-scrollbar {
+			width: 0;
+		  }
+	}
+	&__consultation {
+		position: relative;
+		max-width: 148px;
+		padding: 17px 10px 55px 10px;
+		background: $header-bg;
+		text-align: left;
+		color: $default-color;
+		font-weight: 600;
+		line-height: 19px;
+		border-radius: 15px;
+		margin-right: 15px;
+		&--disabled {
+			opacity: .5;
+			pointer-events: none;
+		}
+	}
+	&__consult-wrap-icon {
+		position: relative;
+		width: 24px;
+		height: 24px;
+		overflow: hidden;
+	}
+	&__consult-icon {
+		@include myPos();
+		max-width: 100%; 
+	}
+	&__service {
+		margin-top: 10px;
+	}
+	&__info-btn {
+		position: absolute;
+		bottom: 5px;
+		right: 5px;
+	}
+	&__service-item {
+		background: $bg-gray;
+		border-radius: 15px;
+		margin-bottom: 10px;
+		padding: 0 20px;
+	}
+	&__service-icon {
+		path {
+			fill: $header-bg;
+		}
+	}
+	&__service-show {
+		right: 0;
+		position: absolute;
+		width: 22px;
+		height: 6px;
+		display: flex;
+		justify-content: space-between;
+		@include tr(transform, .2s);
+		&.rotate {
+			transform: rotate(-90deg);
+		}
+		span {
+			border-radius: 50%;
+			width: 6px;
+			height: 6px;
+			background: $user-info-bg;
+
+		}
+	}
+	&__service-name {
+		font-size: 1.6rem;
+		margin-left: 12px;
+		line-height: 22px;
+	}
+	&__service-items {
+		margin-top: 40px;
+		font-weight: 600;
+	}
+	&__service-top {
+		position: relative;
+		display: flex;
+		height: 79px;
+		align-items: center;
+	}
+	&__service-hide {
+		display: none;
+		margin-top: 25px;
+		padding-bottom: 10px;
+		&.show {
+			display: block;
+		}
+	}
+	&__service-text {
+		margin-bottom: 15px;
+		text-align: left;
+		font-weight: 400;
+		line-height: 19px;
+	}
+}
+.dashboard-popup {
+	min-height: 100vh;
+	background: rgba(20, 20, 20, 0.85);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0 15px;
+	
 }
 
 

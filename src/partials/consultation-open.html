@@ -39,10 +39,16 @@
                 </div>
             </div>
         </div>
-        <div class="period">
-            <label for="period" class="period__label">Срок исполнения:</label>
-            <input type="date" name="period" id="period-consult" class="period__input">
-        </div>
+        <div class="profile__block">
+            <label class="profile__label" for="period">
+                Срок исполнения:
+            </label>
+            <div class="profile__inp-wrap">
+                <input type="text" class="profile__inp-date" placeholder="Укажите дату">
+                <input name="period" type="date" class="profile__input profile__input--date">
+                <button class="profile__data-edit"></button>
+            </div>
+        </div> 
         <div class="description">
             <span class="description__title">
                 Описание задачи:
